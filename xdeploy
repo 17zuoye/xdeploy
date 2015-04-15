@@ -46,7 +46,7 @@ example_conf        = """ {
 }
 """
 if not os.path.exists(conf_file):
-    print """[warn] con't find %s ! Please create one, e.g. %s""" % (conf_file, example_conf)
+    print """[warn] can't find %s ! Please create one, e.g. %s""" % (conf_file, example_conf)
 conf                = json.loads(file(conf_file).read())
 
 print """#1.2. validate it ... """
