@@ -1,6 +1,6 @@
 xdeploy
 ============================
-Deploy changable depended projects in a faster speed.
+Deploy changing dependent projects faster.
 
 
 How does `xdeploy` deploy projects ?
