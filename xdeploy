@@ -18,13 +18,13 @@ conf_file           = os.getenv("XDEPLOY_CONF", _guess_conf_file)
 example_conf        = """ {
     "sync_projects": {
       "local_to_remote" : {
-          "vox-hadoop" : ["/Users/mvj3/17zuoye/hg/vox-hadoop/",     "/home/primary_user/deploy/mvj3.20150414/"],
-          "luiti"      : ["/Users/mvj3/github/17zuoye/luiti/",      "/home/primary_user/deploy/share.20150414/"],
-          "etl_utils"  : ["/Users/mvj3/github/17zuoye/etl_utils/",  "/home/primary_user/deploy/share.20150414/"],
+          "vox-hadoop" : ["/Users/mvj3/17zuoye/hg/vox-hadoop/",     "/home/hadoop/deploy/mvj3.20150414/"],
+          "luiti"      : ["/Users/mvj3/github/17zuoye/luiti/",      "/home/hadoop/deploy/share.20150414/"],
+          "etl_utils"  : ["/Users/mvj3/github/17zuoye/etl_utils/",  "/home/hadoop/deploy/share.20150414/"],
       },
       "remote_to_remote" : {
-          "luiti"      : ["/home/primary_user/deploy/share.20150414/luiti", "/home/primary_user/deploy/share.20150414/"],
-          "etl_utils"  : ["/home/primary_user/deploy/share.20150414/etl_utils", "/home/primary_user/deploy/share.20150414/"],
+          "luiti"      : ["/home/hadoop/deploy/share.20150414/luiti", "/home/hadoop/deploy/share.20150414/"],
+          "etl_utils"  : ["/home/hadoop/deploy/share.20150414/etl_utils", "/home/hadoop/deploy/share.20150414/"],
       },
       "projects_lazy_install_by_python": [
            "etl_utils",
@@ -37,7 +37,7 @@ example_conf        = """ {
     "remote_server": {
         "user"        : "hadoop",
         "host"        : "8.8.8.8",
-        "execute_dir" : "/home/primary_user/deploy/mvj3.20150414/",
+        "execute_dir" : "/home/hadoop/deploy/mvj3.20150414/",
     },
     "luiti_tasks_with_run_first_task" : [
         ["old_student_teacher_report", "Redmine7518EnglishStudentReportWeek", "2015-03-09"],
