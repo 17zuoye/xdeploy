@@ -42,7 +42,9 @@ example_conf        = """ {
     "luiti_tasks_with_run_first_task" : [
         ["old_student_teacher_report", "Redmine7518EnglishStudentReportWeek", "2015-03-09"],
         ["table_tmp", "StudentidToCitycodeDay", "2015-03-23"]
-      ]
+    ],
+    "scripts_before_run": [
+    ]
 }
 """
 if not os.path.exists(conf_file):
@@ -153,10 +155,9 @@ for pkg1, install_cmd1 in conf["dep_packages_with_install_cmd"].iteritems():
         print "[install packaqe]", pkg1, "is changed ..."
         rshell(install_cmd1["cmd"])
 
-print """#5. install some softwares """
-rshell("""
-IS_NEED_SOURCE=False python ops/envsetup/packages.py
-""")
+print """#5. run some scripts. """
+for script1 in conf.get("scripts_before_run", list()):
+    rshell(script1)
 
 print """#6. run luiti """
 task_opts = conf["luiti_tasks_with_run_first_task"]
