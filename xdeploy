@@ -10,7 +10,7 @@ import json
 
 print """#1. Setup conf ... """
 print """#1.1. read it ... """
-current_dir         = os.path.dirname(os.path.abspath(__file__))
+current_dir         = os.getcwd()
 current_user        = os.getenv("XDEPLOY_USER", getpass.getuser())
 current_pid         = os.getpid()
 _guess_conf_file    = os.path.join(current_dir, "xdeploy_" + current_user + ".json")
