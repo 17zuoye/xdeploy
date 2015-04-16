@@ -7,6 +7,7 @@ import getpass
 import commands
 import subprocess
 import json
+import pkg_resources
 
 print """#1. Setup conf ... """
 print """#1.1. read it ... """
@@ -162,11 +163,21 @@ fi;
 
 print """#4. install package lazily"""
 for pkg1, install_cmd1 in conf["dep_packages_with_install_cmd"].iteritems():
-    if not install_cmd1["match"] in source_code_sync_result:
-        print "[install packaqe]", pkg1, "is not changed."
-    else:
+    # compact with interrupt of sync code, and `rsync` will not detect changed code, and will not install updated packages.
+    pkg1 = pkg1.split("/")[-1] # if has dir
+    need_install1 = False
+    try:
+        pkg_resources.require(pkg1)
+    except:
+        need_install1 = True
+    if install_cmd1["match"] in source_code_sync_result:
+        need_install1 = True
+
+    if need_install1:
         print "[install packaqe]", pkg1, "is changed ..."
         rshell(install_cmd1["cmd"])
+    else:
+        print "[install packaqe]", pkg1, "is not changed."
 
 print """#5. run some scripts. """
 for script1 in conf.get("scripts_before_run", list()):
