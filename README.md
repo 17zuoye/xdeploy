@@ -22,5 +22,4 @@ chmod +x xdeploy
 
 TODO
 ----------------------------
-1. More deploy environments, not only [luiti](https://github.com/17zuoye/luiti).
-2. Not listed at above? ... please [create an issue](https://github.com/17zuoye/xdeploy/issues), or [fork it](https://github.com/17zuoye/xdeploy/).
+1. I want a feature X ? ... please [create an issue](https://github.com/17zuoye/xdeploy/issues), or [fork it](https://github.com/17zuoye/xdeploy/).

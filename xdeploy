@@ -39,12 +39,16 @@ example_conf        = """ {
         "host"        : "8.8.8.8",
         "execute_dir" : "/home/hadoop/deploy/mvj3.20150414/",
     },
-    "luiti_tasks_with_run_first_task" : [
-        ["old_student_teacher_report", "Redmine7518EnglishStudentReportWeek", "2015-03-09"],
-        ["table_tmp", "StudentidToCitycodeDay", "2015-03-23"]
-    ],
     "scripts_before_run": [
-    ]
+    ],
+    "launch": {
+        "template": "cd %s; luiti run --task-name %s --date-value %sT00:00:00+08:00",
+        "params_list": [
+            ["old_student_teacher_report", "Redmine7518EnglishStudentReportWeek", "2015-03-09"],
+            ["table_dump", "DumpSchoolCityRefFromDatabaseDay", "2015-03-09"]
+        ],
+        "params_index": 0
+    }
 }
 """
 if not os.path.exists(conf_file):
@@ -159,10 +163,9 @@ print """#5. run some scripts. """
 for script1 in conf.get("scripts_before_run", list()):
     rshell(script1)
 
-print """#6. run luiti """
-task_opts = conf["luiti_tasks_with_run_first_task"]
+print """#6. launch program """
+task_opts = conf["launch"].get("params_list", list())
 if not isinstance(task_opts, list): task_opts = [task_opts]
-task_opts = task_opts[0]
-rshell("""
-cd %s; luiti run --task-name %s --date-value %sT00:00:00+08:00
-""" % (task_opts[0], task_opts[1], task_opts[2],))
+params_index = conf["launch"].get("params_index", 0)
+task_opts = task_opts[params_index]
+rshell(conf["launch"]["template"] % tuple(task_opts))
