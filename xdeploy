@@ -32,6 +32,12 @@ example_conf        = """ {
            "table_dump",
            "table_tmp",
            "old_student_teacher_report"
+      ],
+      "exclude_rules": [
+          "*.pyc",
+          "build",
+          "dist",
+          "*.egg-info"
       ]
     },
     "remote_server": {
@@ -68,7 +74,10 @@ conf["dep_packages_with_install_cmd"] = conf.get("dep_packages_with_install_cmd"
 execute_dir = conf["remote_server"]["execute_dir"]
 
 # rsync 不要 -z 选项
-rsync_command = "rsync -av --exclude '*.pyc' --exclude build --exclude dist --exclude *.egg-info"
+rsync_command = "rsync -av "
+exclude_rules = conf["sync_projects"].get("exclude_rules", list())
+for rule1 in exclude_rules:
+    rsync_command += (" --exclude %s " % rule1)
 rsync_output_file = "/tmp/xdeploy_rsync_%s" % current_pid
 rsync_output_file_remote = "%s_2" % rsync_output_file
 
