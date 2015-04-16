@@ -12,8 +12,8 @@ How does `xdeploy` deploy projects ?
 
 Benefits
 ----------------------------
-1. Every command is print to console detailly, not a black box, plain shell script rocks!
-2. Only Python and it's standard library is needed, no need to install thirty-party libraries.
+1. Every command is print to console detailly, not a black box, RAW SHELL SCRIPT rocks!
+2. Only Python and its standard library is needed, no need to install thirty-party libraries.
 
 
 Usage
