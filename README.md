@@ -2,7 +2,8 @@ xdeploy
 ============================
 [![Build Status](https://img.shields.io/travis/17zuoye/xdeploy/master.svg?style=flat)](https://travis-ci.org/17zuoye/xdeploy)
 
-Deploy changing dependent projects faster.
+Deploy changing dependent projects faster, such as batch processing
+tasks, e.g. submit a Python script or a Hive script to YARN.
 
 
 How does `xdeploy` deploy projects ?
@@ -23,8 +24,8 @@ Usage
 ```bash
 wget https://raw.githubusercontent.com/17zuoye/xdeploy/master/xdeploy
 chmod +x xdeploy
-
-./xdeploy
+mv -f xdeploy /usr/local/bin/
+xdeploy
 ```
 
 
