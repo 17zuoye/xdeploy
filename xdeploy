@@ -195,7 +195,7 @@ task_opts = task_opts[params_index]
 rshell(conf["launch"]["template"] % tuple(task_opts))
 
 print """#7. clean tmp file """
-rshell("""
-find /tmp/ -maxdepth 1 -type f -mmin +30 | grep xdeploy_ | xargs rm -f
-""")
+clean_file_under_root_tmp = """find /tmp/ -maxdepth 1 -type f -mmin +30 | grep %s | xargs rm -f ;"""
+
+rshell(clean_file_under_root_tmp % "xdeploy_")
 # TODO when exit, clean

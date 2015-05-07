@@ -1,5 +1,7 @@
 xdeploy
 ============================
+[![Build Status](https://img.shields.io/travis/17zuoye/xdeploy/master.svg?style=flat)](https://travis-ci.org/17zuoye/xdeploy)
+
 Deploy changing dependent projects faster.
 
 
