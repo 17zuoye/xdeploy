@@ -9,6 +9,10 @@ import getpass
 import subprocess
 import json
 import pkg_resources
+import datetime
+
+today_str = datetime.datetime.now().strftime("%Y%m%d")
+
 
 print """#1. Setup conf ... """
 print """#1.1. read it ... """
@@ -80,7 +84,7 @@ rsync_command = "rsync -av "
 exclude_rules = conf["sync_projects"].get("exclude_rules", list())
 for rule1 in exclude_rules:
     rsync_command += (" --exclude %s " % rule1)
-rsync_output_file = "/tmp/xdeploy_rsync_%s" % current_pid
+rsync_output_file = "/tmp/xdeploy_rsync_%s_%s" % (today_str, current_pid)
 rsync_output_file_remote = "%s_2" % rsync_output_file
 
 
@@ -189,3 +193,9 @@ if not isinstance(task_opts, list):
 params_index = conf["launch"].get("params_index", 0)
 task_opts = task_opts[params_index]
 rshell(conf["launch"]["template"] % tuple(task_opts))
+
+print """#7. clean tmp file """
+rshell("""
+find /tmp/ -maxdepth 1 -type f -mmin +30 | grep xdeploy_ | xargs rm -f
+""")
+# TODO when exit, clean

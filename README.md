@@ -14,7 +14,7 @@ Benefits
 ----------------------------
 1. Every command is print to console detailly, not a black box, RAW SHELL SCRIPT rocks!
 2. To run this script, only Python and its standard library is needed, no need to install thirty-party libraries.
-
+3. Create a `virtualenv` environment automatically.
 
 Usage
 ----------------------------
