@@ -2,6 +2,8 @@ xdeploy
 ============================
 [![Build Status](https://img.shields.io/travis/17zuoye/xdeploy/master.svg?style=flat)](https://travis-ci.org/17zuoye/xdeploy)
 
+**Deprecated** moved to https://github.com/17zuoye/rsyncrun/
+
 Deploy changing dependent projects faster, such as batch processing
 tasks, e.g. submit a Python script or a Hive script to YARN.
 
